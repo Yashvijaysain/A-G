@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   BadgeCheck,
   Building2,
@@ -13,6 +14,7 @@ import {
   MapPin,
   Menu,
   Phone,
+  Image as ImageIcon,
   SearchCheck,
   ShieldCheck,
   Sparkles,
@@ -21,6 +23,7 @@ import {
 } from "lucide-react";
 
 const logo = new URL("../A&G LOGO.png", import.meta.url).href;
+const heroVideo = new URL("../video.mp4", import.meta.url).href;
 const projectLogos = [
   new URL("../PROJECT LOGO/1.png", import.meta.url).href,
   new URL("../PROJECT LOGO/2.png", import.meta.url).href,
@@ -35,18 +38,47 @@ const projectLogos = [
 
 const projectImages = {
   county107: new URL("../projects image/107 balcony view.jpg", import.meta.url).href,
+  county107Building: new URL("../projects image/107 building.jpg", import.meta.url).href,
+  county107Bouilding: new URL("../projects image/107 bouilding.webp", import.meta.url).href,
+  county107Map: new URL("../projects image/107 map.webp", import.meta.url).href,
   cherry: new URL("../projects image/cherry aminities.jpg", import.meta.url).href,
+  cherryBuilding: new URL("../projects image/cherry building.webp", import.meta.url).href,
+  cherryGarden: new URL("../projects image/cherry garden.jpeg", import.meta.url).href,
+  cherryMap: new URL("../projects image/cherry map.jpeg", import.meta.url).href,
   cleoGarden: new URL("../projects image/cleo garden scenery.jpg", import.meta.url).href,
   cleoBuilding: new URL("../projects image/cleo building.jpg", import.meta.url).href,
   cleoInterior: new URL("../projects image/cleo interior.jpg", import.meta.url).href,
+  cleoMap: new URL("../projects image/cleo map.jpg", import.meta.url).href,
+  cleo: new URL("../projects image/cleo.webp", import.meta.url).href,
   cloveAerial: new URL("../projects image/clove ariel building.jpg", import.meta.url).href,
   cloveSitting: new URL("../projects image/clove outside sitting.jpg", import.meta.url).href,
+  cloveBuilding: new URL("../projects image/clove building.webp", import.meta.url).href,
+  cloveBuildingAlt: new URL("../projects image/clove building123.jpg", import.meta.url).href,
+  cloveBuildings: new URL("../projects image/clove buildings.jpg", import.meta.url).href,
+  cloveGarden: new URL("../projects image/clove garden.webp", import.meta.url).href,
+  cloveLocation: new URL("../projects image/clove location.jpeg", import.meta.url).href,
+  cloveMap: new URL("../projects image/clove map.jpeg", import.meta.url).href,
+  clove: new URL("../projects image/clove.jpg", import.meta.url).href,
+  cocoBuilding: new URL("../projects image/coco building.avif", import.meta.url).href,
   cocoClub: new URL("../projects image/coco club house.webp", import.meta.url).href,
+  cocoMap: new URL("../projects image/coco locationmap.jpg", import.meta.url).href,
+  cocoLocation: new URL("../projects image/mapcoco.jpg", import.meta.url).href,
   ivory: new URL("../projects image/IVORY BANNER.webp", import.meta.url).href,
+  ivoryBuilding: new URL("../projects image/ivory building.webp", import.meta.url).href,
+  ivoryGardenPng: new URL("../projects image/ivory gaarden.png", import.meta.url).href,
+  ivoryGarden: new URL("../projects image/ivory garden.webp", import.meta.url).href,
+  ivoryMap: new URL("../projects image/ivory map.webp", import.meta.url).href,
+  ivyBuilding: new URL("../projects image/ivy building.webp", import.meta.url).href,
   ivy: new URL("../projects image/ivy inside.webp", import.meta.url).href,
+  jadeLocation: new URL("../projects image/jad location.jpg", import.meta.url).href,
   jadeAerial: new URL("../projects image/jade ariel garden.jpg", import.meta.url).href,
+  jadeBuilding: new URL("../projects image/jade building.webp", import.meta.url).href,
+  jadeGarden: new URL("../projects image/jade garden.jpg", import.meta.url).href,
+  jadeMap: new URL("../projects image/jade map.webp", import.meta.url).href,
   jadeSitting: new URL("../projects image/jade sitting.jpg", import.meta.url).href,
   olive: new URL("../projects image/olive building.jpg", import.meta.url).href,
+  oliveGarden: new URL("../projects image/olive garden.jpg", import.meta.url).href,
+  oliveMap: new URL("../projects image/olive map.jpg", import.meta.url).href,
 };
 
 const projects = [
@@ -59,6 +91,8 @@ const projects = [
     image: projectImages.county107,
     logo: projectLogos[0],
     copy: "High-rise residences with open balcony views, premium planning, and refined address value.",
+    gallery: [projectImages.county107, projectImages.county107Building, projectImages.county107Bouilding, projectImages.county107Map],
+    highlights: ["Open balcony views", "Premium residential planning", "Sector 107 address advantage", "Map and access image available"],
   },
   {
     name: "Cherry County",
@@ -69,6 +103,8 @@ const projects = [
     image: projectImages.cherry,
     logo: projectLogos[1],
     copy: "Amenity-led homes shaped around gardens, community life, and everyday convenience.",
+    gallery: [projectImages.cherry, projectImages.cherryBuilding, projectImages.cherryGarden, projectImages.cherryMap],
+    highlights: ["Amenity-led community", "Garden-focused lifestyle", "Greater Noida West connectivity", "Location map included"],
   },
   {
     name: "Cleo County",
@@ -79,6 +115,8 @@ const projects = [
     image: projectImages.cleoGarden,
     logo: projectLogos[2],
     copy: "Resort-style landscaping, elegant interiors, and a calm luxury residential environment.",
+    gallery: [projectImages.cleoGarden, projectImages.cleoBuilding, projectImages.cleoInterior, projectImages.cleo, projectImages.cleoMap],
+    highlights: ["Resort-style landscaping", "Elegant interiors", "Luxury community planning", "Sector 121 location"],
   },
   {
     name: "Clove County",
@@ -89,6 +127,8 @@ const projects = [
     image: projectImages.cloveSitting,
     logo: projectLogos[3],
     copy: "Green-facing residences with leisure corners, elegant towers, and planned open spaces.",
+    gallery: [projectImages.cloveSitting, projectImages.cloveAerial, projectImages.cloveBuilding, projectImages.cloveBuildingAlt, projectImages.cloveBuildings, projectImages.cloveGarden, projectImages.cloveLocation, projectImages.cloveMap, projectImages.clove],
+    highlights: ["Expressway-side residence option", "Multiple tower views", "Garden and sitting spaces", "Location and map images included"],
   },
   {
     name: "Coco County",
@@ -99,6 +139,8 @@ const projects = [
     image: projectImages.cocoClub,
     logo: projectLogos[4],
     copy: "Clubhouse-first living with social spaces, efficient homes, and composed residential planning.",
+    gallery: [projectImages.cocoClub, projectImages.cocoBuilding, projectImages.cocoMap, projectImages.cocoLocation],
+    highlights: ["Clubhouse living", "Efficient apartment planning", "Social amenity spaces", "Greater Noida West focus"],
   },
   {
     name: "Ivory County",
@@ -109,6 +151,8 @@ const projects = [
     image: projectImages.ivory,
     logo: projectLogos[5],
     copy: "A polished premium address with clean architecture, lifestyle greens, and strong city access.",
+    gallery: [projectImages.ivory, projectImages.ivoryBuilding, projectImages.ivoryGardenPng, projectImages.ivoryGarden, projectImages.ivoryMap],
+    highlights: ["Premium development", "Lifestyle greens", "Clean architectural presence", "Sector 115 access"],
   },
   {
     name: "Ivy County",
@@ -119,6 +163,8 @@ const projects = [
     image: projectImages.ivy,
     logo: projectLogos[6],
     copy: "Elegant interiors and efficient spaces for buyers seeking a modern urban home.",
+    gallery: [projectImages.ivy, projectImages.ivyBuilding],
+    highlights: ["Urban residential address", "Elegant interiors", "Efficient home layouts", "Sector 75 location"],
   },
   {
     name: "Jade County",
@@ -129,6 +175,8 @@ const projects = [
     image: projectImages.jadeAerial,
     logo: projectLogos[7],
     copy: "Expansive landscaping, refined seating courts, and a resort-like residential rhythm.",
+    gallery: [projectImages.jadeAerial, projectImages.jadeSitting, projectImages.jadeBuilding, projectImages.jadeGarden, projectImages.jadeLocation, projectImages.jadeMap],
+    highlights: ["Expansive landscaping", "Refined seating courts", "Garden living appeal", "Location and map visuals"],
   },
   {
     name: "Olive County",
@@ -139,13 +187,9 @@ const projects = [
     image: projectImages.olive,
     logo: projectLogos[8],
     copy: "A balanced address with practical amenities, garden views, and clean urban access.",
+    gallery: [projectImages.olive, projectImages.oliveGarden, projectImages.oliveMap],
+    highlights: ["Practical amenity mix", "Garden views", "Investment-friendly positioning", "Map image included"],
   },
-];
-
-const heroImages = [
-  projectImages.cloveAerial,
-  projectImages.jadeSitting,
-  projectImages.cleoBuilding,
 ];
 
 const filters = ["All", "Residential", "Luxury", "Expressway", "Investment"];
@@ -240,42 +284,18 @@ function Hero() {
   return (
     <section className="hero" id="home">
       <motion.div className="hero-media" style={{ y, scale }} aria-hidden="true">
-        {heroImages.map((image, index) => (
-          <img key={image} src={image} alt="" style={{ animationDelay: `${index * 6}s` }} />
-        ))}
+        <video src={heroVideo} autoPlay muted loop playsInline preload="metadata" />
       </motion.div>
       <div className="hero-overlay" />
       <div className="hero-grid">
         <div className="hero-content">
-          <motion.p className="eyebrow" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            Premium Real Estate Channel Partner
-          </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.95, delay: 0.1 }}>
-            A&G
-          </motion.h1>
-          <motion.p className="hero-copy" initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.22 }}>
-            A refined property advisory experience for buyers and investors seeking premium residential addresses, transparent comparisons, and guided booking support.
-          </motion.p>
+        
           <motion.div className="hero-actions" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.34 }}>
             <a className="primary-btn magnetic" href="#projects">Explore Projects <ArrowRight size={17} /></a>
             <a className="ghost-btn magnetic" href="#contact">Book Consultation</a>
           </motion.div>
         </div>
-        <motion.div className="hero-dashboard" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.42 }}>
-          <div className="glass-card">
-            <span>Portfolio Snapshot</span>
-            <strong>9+</strong>
-            <p>Featured residential and investment opportunities</p>
-          </div>
-          <div className="glass-row">
-            <BadgeCheck size={18} />
-            <span>Verified project guidance</span>
-          </div>
-          <div className="glass-row">
-            <MapPin size={18} />
-            <span>Noida and NCR focus</span>
-          </div>
-        </motion.div>
+       
       </div>
     </section>
   );
@@ -348,7 +368,7 @@ function Locations() {
   );
 }
 
-function ProjectShowcase() {
+function ProjectShowcase({ onSelectProject }) {
   const [active, setActive] = useState(0);
   const [filter, setFilter] = useState("All");
   const filteredProjects = useMemo(() => (filter === "All" ? projects : projects.filter((project) => project.category === filter)), [filter]);
@@ -378,8 +398,11 @@ function ProjectShowcase() {
               key={project.name}
               style={{ backgroundImage: `url(${project.image})` }}
               onMouseEnter={() => setActive(index)}
+              onClick={() => onSelectProject(project)}
               onFocus={() => setActive(index)}
+              onKeyDown={(event) => { if (event.key === "Enter") onSelectProject(project); }}
               tabIndex={0}
+              role="button"
               layout
             >
               <div className="panel-kicker">{project.short}</div>
@@ -388,7 +411,7 @@ function ProjectShowcase() {
                 <span>{project.type}</span>
                 <h3>{project.name}</h3>
                 <p>{project.copy}</p>
-                <a href="#contact">Read More <ArrowRight size={15} /></a>
+                <button className="panel-link" type="button">Read More <ArrowRight size={15} /></button>
               </motion.div>
             </motion.article>
           ))}
@@ -398,7 +421,7 @@ function ProjectShowcase() {
       <div className="project-mini-grid">
         {projects.slice(5).map((project, index) => (
           <Reveal key={project.name} delay={index * 0.04}>
-            <motion.article className="mini-project" whileHover={{ y: -8 }}>
+            <motion.article className="mini-project" whileHover={{ y: -8 }} onClick={() => onSelectProject(project)} onKeyDown={(event) => { if (event.key === "Enter") onSelectProject(project); }} role="button" tabIndex={0}>
               <img src={project.image} alt={project.name} />
               <div>
                 <span>{project.type}</span>
@@ -534,6 +557,82 @@ function Contact() {
   );
 }
 
+function ProjectDetail({ project, onBack }) {
+  const [activeImage, setActiveImage] = useState(project.gallery[0]);
+  const projectFacts = [
+    ["Location", project.location],
+    ["Project Type", project.type],
+    ["Category", project.category],
+    ["Gallery", project.gallery.length + " project images"],
+  ];
+
+  return (
+    <main className="project-detail-page">
+      <section className="detail-hero" style={{ backgroundImage: `url(${project.image})` }}>
+        <div className="detail-hero-overlay" />
+        <div className="detail-hero-content">
+          <button className="back-btn" type="button" onClick={onBack}><ArrowLeft size={17} /> Back to Projects</button>
+          <img src={project.logo} alt={project.name + " logo"} />
+          <p className="eyebrow">{project.category}</p>
+          <h1>{project.name}</h1>
+          <p>{project.copy}</p>
+          <a className="primary-btn magnetic" href="#detail-contact"><Phone size={16} /> Enquire Now</a>
+        </div>
+      </section>
+
+      <section className="detail-overview">
+        <div className="detail-copy">
+          <p className="eyebrow">Project Details</p>
+          <h2>{project.name} at a glance.</h2>
+          <p>{project.copy} Review the location, project style, highlights, and the full set of images provided for this project.</p>
+          <div className="detail-facts">
+            {projectFacts.map(([label, value]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="highlight-list">
+          {project.highlights.map((item) => (
+            <div key={item}>
+              <BadgeCheck size={20} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="detail-gallery" aria-label={project.name + " gallery"}>
+        <div className="section-heading">
+          <p className="eyebrow"><ImageIcon size={15} /> Project Images</p>
+          <h2>All provided images for {project.name}.</h2>
+        </div>
+        <div className="gallery-viewer">
+          <img src={activeImage} alt={project.name + " selected view"} />
+        </div>
+        <div className="gallery-grid">
+          {project.gallery.map((image, index) => (
+            <button className={activeImage === image ? "active" : ""} key={image} type="button" onClick={() => setActiveImage(image)}>
+              <img src={image} alt={project.name + " view " + (index + 1)} />
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="detail-contact" id="detail-contact">
+        <div>
+          <p className="eyebrow">Next Step</p>
+          <h2>Book a visit or ask for current inventory.</h2>
+          <p>A&G can help with pricing clarity, site visit scheduling, documentation guidance, and developer coordination for {project.name}.</p>
+        </div>
+        <a className="primary-btn magnetic" href="tel:+91 70424 77557"><Phone size={16} /> Call +917042477557</a>
+      </section>
+    </main>
+  );
+}
+
 function FloatingActions() {
   return (
     <div className="floating-actions" aria-label="Quick contact actions">
@@ -545,24 +644,39 @@ function FloatingActions() {
 }
 
 export default function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.25 });
+
+  const selectProject = (project) => {
+    setSelectedProject(project);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const closeProject = () => {
+    setSelectedProject(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
       <motion.div className="scroll-progress" style={{ scaleX: progress }} />
       <Header />
-      <main>
-        <Hero />
-        <LogoMarquee />
-        <About />
-        <Locations />
-        <ProjectShowcase />
-        <Categories />
-        <Services />
-        <Testimonials />
-        <Contact />
-      </main>
+      {selectedProject ? (
+        <ProjectDetail project={selectedProject} onBack={closeProject} />
+      ) : (
+        <main>
+          <Hero />
+          <LogoMarquee />
+          <About />
+          <Locations />
+          <ProjectShowcase onSelectProject={selectProject} />
+          <Categories />
+          <Services />
+          <Testimonials />
+          <Contact />
+        </main>
+      )}
       <FloatingActions />
       <footer className="site-footer">
         <div>
