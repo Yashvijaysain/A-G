@@ -1112,15 +1112,22 @@ export default function App() {
                   <a href="tel:+917042477557"><Phone size={12} /> +91 70424 77557</a>
                 </div>
                 <div className="footer-map-embed">
-                  <iframe 
-                    title="A&G Office Location"
-                    src="https://www.google.com/maps/place/Wave+Silver+Tower/@28.5716734,77.3222204,920m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390ce44ec2c55555:0xefa16e0dc9e90b7!8m2!3d28.5716734!4d77.3247953!16s%2Fg%2F11f3n2r9xy?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" 
-                    width="100%" 
-                    height="90" 
-                    style={{ border: 0, filter: "grayscale(1) invert(0.9)" }} 
-                    allowFullScreen="" 
-                    loading="lazy"
-                  />
+                  <a 
+                    href="https://www.google.com/maps/place/Wave+Silver+Tower/@28.5716734,77.3222204,920m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390ce44ec2c55555:0xefa16e0dc9e90b7!8m2!3d28.5716734!4d77.3247953!16s%2Fg%2F11f3n2r9xy?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    title="Open Wave Silver Tower in Google Maps"
+                  >
+                    <iframe 
+                      title="A&G Office Location - Wave Silver Tower"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1483861!2d77.3222204!3d28.5716734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce44ec2c55555%3A0xefa16e0dc9e90b7!2sWave%20Silver%20Tower!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                      width="100%" 
+                      height="110" 
+                      style={{ border: 0, filter: "grayscale(1) invert(0.9)", pointerEvents: "none" }} 
+                      allowFullScreen="" 
+                      loading="lazy"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
