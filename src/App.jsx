@@ -321,15 +321,20 @@ function Header() {
   const { scrollY } = useScroll();
   const solid = useTransform(scrollY, [0, 80], [0, 1]);
 
+  const solidBg = useTransform(solid, [0, 1], ["rgba(18,17,16,0)", "rgba(255,255,255,0.96)"]);
+  const solidBorder = useTransform(solid, [0, 1], ["1px solid rgba(255,255,255,0)", "1px solid rgba(185,154,95,0.18)"]);
+  const solidColor = useTransform(solid, [0, 1], ["#ffffff", "#121110"]);
+  const solidShadow = useTransform(solid, [0, 1], ["0 0 0 rgba(0,0,0,0)", "0 10px 40px rgba(18,17,16,0.04)"]);
+
   return (
     <>
       <motion.header
         className="site-header"
         style={{
-          backgroundColor: useTransform(solid, [0, 1], ["rgba(18,17,16,0)", "rgba(255,255,255,0.96)"]),
-          borderBottom: useTransform(solid, [0, 1], ["1px solid rgba(255,255,255,0)", "1px solid rgba(185,154,95,0.18)"]),
-          color: useTransform(solid, [0, 1], ["#ffffff", "#121110"]),
-          boxShadow: useTransform(solid, [0, 1], ["0 0 0 rgba(0,0,0,0)", "0 10px 40px rgba(18,17,16,0.04)"]),
+          backgroundColor: open ? "rgba(255,255,255,0.98)" : solidBg,
+          borderBottom: open ? "1px solid rgba(185,154,95,0.18)" : solidBorder,
+          color: open ? "#121110" : solidColor,
+          boxShadow: open ? "0 10px 40px rgba(18,17,16,0.04)" : solidShadow,
         }}
       >
         <a className="brand" href="#home">
