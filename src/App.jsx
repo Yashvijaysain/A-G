@@ -289,13 +289,39 @@ function Hero() {
       <div className="hero-overlay" />
       <div className="hero-grid">
         <div className="hero-content">
-        
-          <motion.div className="hero-actions" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.34 }}>
+          <motion.p
+            className="eyebrow"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Premium Real Estate Advisory
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+          >
+            Agarwal<br />&amp; Gehlot
+          </motion.h1>
+          <motion.p
+            className="hero-tagline"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.32 }}
+          >
+            Curated luxury residences, investment properties &amp; commercial spaces across Noida &amp; Greater Noida.
+          </motion.p>
+          <motion.div
+            className="hero-actions"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.46 }}
+          >
             <a className="primary-btn magnetic" href="#projects">Explore Projects <ArrowRight size={17} /></a>
             <a className="ghost-btn magnetic" href="#contact">Book Consultation</a>
           </motion.div>
         </div>
-       
       </div>
     </section>
   );
@@ -353,14 +379,16 @@ function Locations() {
       </Reveal>
       <Reveal className="location-pills">
         {[
-          ["5", "Noida"],
-          ["2", "Greater Noida"],
-          ["1", "Expressway"],
-          ["4", "Investment Pick"],
-        ].map(([count, label]) => (
+          { Icon: MapPin,     count: "5", label: "Projects in Noida",      desc: "Sectors 75, 107, 115, 121 & more" },
+          { Icon: MapPin,     count: "2", label: "Greater Noida West",      desc: "Modern community living" },
+          { Icon: MapPin,     count: "1", label: "Noida Expressway",        desc: "Sector 151 green corridor" },
+          { Icon: TrendingUp, count: "4", label: "Investment-Rated Picks",  desc: "High-growth curated projects" },
+        ].map(({ Icon, count, label, desc }) => (
           <motion.a href="#projects" key={label} whileHover={{ y: -8, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Icon size={18} className="pill-icon" />
             <strong>{count}</strong>
             <span>{label}</span>
+            <em>{desc}</em>
           </motion.a>
         ))}
       </Reveal>
@@ -379,7 +407,7 @@ function ProjectShowcase({ onSelectProject }) {
       <div className="section-split">
         <Reveal className="section-heading">
           <p className="eyebrow">Featured Projects</p>
-          <h2>Hover through a premium portfolio built for serious decisions.</h2>
+          <h2>Browse our curated portfolio of premium projects.</h2>
         </Reveal>
         <Reveal className="filter-row">
           {filters.map((item) => (
@@ -398,6 +426,7 @@ function ProjectShowcase({ onSelectProject }) {
               key={project.name}
               style={{ backgroundImage: `url(${project.image})` }}
               onMouseEnter={() => setActive(index)}
+              onTouchStart={() => setActive(index)}
               onClick={() => onSelectProject(project)}
               onFocus={() => setActive(index)}
               onKeyDown={(event) => { if (event.key === "Enter") onSelectProject(project); }}

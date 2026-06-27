@@ -214,7 +214,18 @@ button {
 }
 
 .hero-overlay {
-  background: transparent;
+  background:
+    linear-gradient(
+      to right,
+      rgba(8, 7, 6, 0.78) 0%,
+      rgba(8, 7, 6, 0.48) 55%,
+      rgba(8, 7, 6, 0.32) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(8, 7, 6, 0.72) 0%,
+      rgba(8, 7, 6, 0.06) 52%
+    );
 }
 
 .hero-grid {
@@ -255,20 +266,20 @@ button {
   line-height: 0.82;
 }
 
-.hero-copy {
-  max-width: 700px;
-  margin: 26px 0 0;
+.hero-tagline {
+  max-width: 620px;
+  margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.84);
-  font-size: clamp(1rem, 1.6vw, 1.24rem);
-  line-height: 1.8;
+  font-size: clamp(0.96rem, 1.5vw, 1.18rem);
+  line-height: 1.78;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
-  margin-top: 0;
+  margin-top: 36px;
 }
 
 .hero-dashboard {
@@ -350,7 +361,7 @@ button {
 .services-section,
 .testimonials-section,
 .contact-section {
-  padding: clamp(76px, 9vw, 128px) clamp(18px, 5vw, 74px);
+  padding: clamp(52px, 6vw, 88px) clamp(18px, 5vw, 74px);
 }
 
 .section-heading {
@@ -442,20 +453,35 @@ button {
 
 .location-pills a {
   display: grid;
-  gap: 8px;
-  padding: 24px;
+  gap: 4px;
+  padding: 22px 24px;
   background: var(--paper);
   border: 1px solid var(--line);
+}
+
+.location-pills .pill-icon {
+  color: var(--ruby);
+  margin-bottom: 6px;
 }
 
 .location-pills strong {
   font-family: "Cinzel", serif;
   font-size: 2.7rem;
+  line-height: 1;
 }
 
 .location-pills span {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.location-pills em {
+  font-style: normal;
   color: var(--muted);
-  font-weight: 900;
+  font-size: 0.76rem;
+  font-weight: 500;
+  margin-top: 2px;
 }
 
 .projects-section {
@@ -643,7 +669,7 @@ button {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
-  margin-top: 52px;
+  margin-top: 32px;
   background: var(--line);
 }
 
@@ -828,29 +854,37 @@ button {
 
 .floating-actions {
   position: fixed;
-  right: 22px;
-  bottom: 24px;
+  right: 20px;
+  bottom: 22px;
   z-index: 850;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .floating-actions a {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   color: #fff;
-  background: var(--cyan);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  font-size: 0.75rem;
+  background: var(--ruby);
+  box-shadow: 0 8px 24px rgba(151, 28, 52, 0.35);
+  font-size: 0.72rem;
   font-weight: 900;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.floating-actions a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(151, 28, 52, 0.45);
 }
 
 .floating-actions .chat {
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
+  background: linear-gradient(135deg, var(--ruby), #b8002e);
+  font-size: 0.74rem;
 }
 
 .site-footer {
@@ -928,13 +962,20 @@ button {
     min-height: auto;
   }
 
-  .project-panel,
-  .project-panel.active,
+  .project-panel {
+    flex-basis: auto;
+    min-height: 460px;
+    filter: grayscale(0.3);
+    transition: filter 0.4s ease;
+  }
+
   .project-panel:hover,
   .project-panel:focus {
     flex-basis: auto;
-    min-height: 460px;
-    filter: grayscale(0.25);
+  }
+
+  .project-panel.active {
+    filter: grayscale(0);
   }
 
   .panel-content {
@@ -968,11 +1009,8 @@ button {
     padding: 22px;
   }
 
-  .project-panel,
-  .project-panel.active,
-  .project-panel:hover,
-  .project-panel:focus {
-    min-height: 520px;
+  .project-panel {
+    min-height: 480px;
   }
 
   .panel-kicker,
@@ -1000,18 +1038,18 @@ button {
   }
 
   .floating-actions {
-    right: 14px;
-    bottom: 14px;
+    right: 12px;
+    bottom: 12px;
   }
 
   .floating-actions a {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
   }
 
   .floating-actions .chat {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
 
   .site-footer {
@@ -1220,7 +1258,7 @@ button {
 }
 
 .gallery-viewer {
-  margin-top: 44px;
+  margin-top: 32px;
   background: var(--charcoal);
   box-shadow: var(--shadow);
 }
