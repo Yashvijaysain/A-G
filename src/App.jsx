@@ -286,42 +286,31 @@ function Hero() {
       <motion.div className="hero-media" style={{ y, scale }} aria-hidden="true">
         <video src={heroVideo} autoPlay muted loop playsInline preload="metadata" />
       </motion.div>
-      <div className="hero-overlay" />
+
       <div className="hero-grid">
         <div className="hero-content">
-          <motion.p
-            className="eyebrow"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
+          <motion.p className="eyebrow" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
             Premium Real Estate Advisory
           </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-          >
+          <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
             Agarwal<br />&amp; Gehlot
           </motion.h1>
-          <motion.p
-            className="hero-tagline"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.32 }}
-          >
+          <motion.p className="hero-tagline" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.32 }}>
             Curated luxury residences, investment properties &amp; commercial spaces across Noida &amp; Greater Noida.
           </motion.p>
-          <motion.div
-            className="hero-actions"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.46 }}
-          >
-            <a className="primary-btn magnetic" href="#projects">Explore Projects <ArrowRight size={17} /></a>
-            <a className="ghost-btn magnetic" href="#contact">Book Consultation</a>
-          </motion.div>
+         
+          
+         
         </div>
+        <motion.div
+          className="hero-actions"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, delay: 0.46 }}
+        >
+          <a className="primary-btn magnetic" href="#projects">Explore Projects <ArrowRight size={17} /></a>
+          <a className="ghost-btn magnetic" href="#contact">Book Consultation</a>
+        </motion.div>
       </div>
     </section>
   );
