@@ -295,9 +295,7 @@ function Hero() {
           <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
             Agarwal<br />&amp; Gehlot
           </motion.h1>
-          <motion.p className="hero-tagline" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.32 }}>
-            Curated luxury residences, investment properties &amp; commercial spaces across Noida &amp; Greater Noida.
-          </motion.p>
+         
          
           
          
