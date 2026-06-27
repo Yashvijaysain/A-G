@@ -447,6 +447,7 @@ function Hero() {
 }
 
 function LogoMarquee() {
+  const logos = [...projectLogos, ...projectLogos, ...projectLogos];
   return (
     <section className="developer-alliances" aria-label="Trusted Developer Alliances">
       <div className="marquee-label">
@@ -454,10 +455,10 @@ function LogoMarquee() {
       </div>
       <div className="marquee-wrapper">
         <div className="marquee-track">
-          {developerAlliances.concat(developerAlliances).map((item, index) => (
-            <span key={`${item}-${index}`} className="developer-alliances-name">
-              {item}
-            </span>
+          {logos.map((item, index) => (
+            <div key={`${item}-${index}`} className="developer-alliance-logo-wrap">
+              <img src={item} alt={`Developer alliance logo ${(index % projectLogos.length) + 1}`} className="developer-alliance-logo" />
+            </div>
           ))}
         </div>
       </div>
@@ -1103,17 +1104,17 @@ export default function App() {
               <div className="footer-col-contact">
                 <h4>OFFICE ADVISORY</h4>
                 <p className="address-text">
-                  Tower B, 14th Floor, Premium Business Hub,<br />
-                  Sector 62, Noida, UP - 201301
+                  504-505 5th, Wave Silver Tower, <br />
+                  Sector 18, Noida, UP - 201301
                 </p>
                 <div className="footer-contact-links">
-                  <a href="mailto:hello@aandgrealty.com"><Mail size={12} /> hello@aandgrealty.com</a>
+                  <a href="mailto:hello@aandgrealty.com"><Mail size={12} /> agarwalandgehlot.com</a>
                   <a href="tel:+917042477557"><Phone size={12} /> +91 70424 77557</a>
                 </div>
                 <div className="footer-map-embed">
                   <iframe 
                     title="A&G Office Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4278453472097!2d77.37126131508226!3d28.616942982424192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5668ca3e7fb%3A0xe543c7b653139366!2sSector%2062%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1625039239842!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/place/Wave+Silver+Tower/@28.5716734,77.3222204,920m/data=!3m2!1e3!4b1!4m6!3m5!1s0x390ce44ec2c55555:0xefa16e0dc9e90b7!8m2!3d28.5716734!4d77.3247953!16s%2Fg%2F11f3n2r9xy?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" 
                     width="100%" 
                     height="90" 
                     style={{ border: 0, filter: "grayscale(1) invert(0.9)" }} 
