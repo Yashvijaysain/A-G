@@ -85,6 +85,9 @@ const projectImages = {
   olive: new URL("../projects image/olive building.jpg", import.meta.url).href,
   oliveGarden: new URL("../projects image/olive garden.jpg", import.meta.url).href,
   oliveMap: new URL("../projects image/olive map.jpg", import.meta.url).href,
+  centercourt: new URL("../projects image/centercourt.png", import.meta.url).href,
+  countycourtyard: new URL("../projects image/countycourtyard.webp", import.meta.url).href,
+  courtyard: new URL("../projects image/courtyard.png", import.meta.url).href,
 };
 
 const projects = [
@@ -240,6 +243,40 @@ const projects = [
     status: "Ready to Move",
     badge: "Investment Pick",
     roi: "4.9% Rental Yield / 8% Projected YoY Appreciation"
+  },
+  {
+    name: "Center Court",
+    short: "Center",
+    location: "Pataudi Rd, Harsaru, Sector 88A, Gurugram",
+    type: "Premium Sports Residences",
+    category: "Luxury",
+    image: projectImages.centercourt,
+    logo: projectLogos[0],
+    copy: "Elegant sports-themed luxury apartments with advanced recreational facilities, expansive green lawns, and direct expressway links in Sector 88A, Gurugram.",
+    gallery: [projectImages.centercourt, projectImages.courtyard],
+    highlights: ["Sports-centric luxury layout planning", "Excellent connectivity to Dwarka Expressway & NH-8", "Designed with ample natural ventilation", "World-class fitness center and multiple sports courts"],
+    price: "₹1.95 Cr onwards",
+    config: "3, 4 BHK Sports Residences",
+    status: "Ready to Move",
+    badge: "Signature Collection",
+    roi: "5.5% Rental Yield / 13% Projected YoY Appreciation"
+  },
+  {
+    name: "County Courtyard",
+    short: "Courtyard",
+    location: "Netaji Subhash Place, Pitampura, Delhi",
+    type: "Elite Commercial Hub",
+    category: "Investment",
+    image: projectImages.countycourtyard,
+    logo: projectLogos[0],
+    copy: "A premium commercial landmark in Netaji Subhash Place, Pitampura offering luxury retail spaces, high-end office suites, and gourmet dining zones.",
+    gallery: [projectImages.countycourtyard, projectImages.courtyard],
+    highlights: ["Prime corner commercial plot in NSP Pitampura", "Direct footfall from Netaji Subhash Place Metro", "Pre-leased retail spaces with top international brands", "Grand double-height entrance lobby with high-speed lifts"],
+    price: "₹2.50 Cr onwards",
+    config: "Premium Office & Retail Suites",
+    status: "Under Construction (Possession 2026)",
+    badge: "Exclusive Release",
+    roi: "7.2% Rental Yield / 16% Projected YoY Appreciation"
   },
 ];
 
@@ -985,7 +1022,7 @@ function FloatingActions() {
             <a href="tel:+917042477557" className="menu-btn phone-btn">
               <Phone size={16} /> <span>Advisory Hotline</span>
             </a>
-            <a href="mailto:hello@aandgrealty.com" className="menu-btn email-btn">
+            <a href="mailto:info@aandgrealty.com" className="menu-btn email-btn">
               <Mail size={16} /> <span>Email Desk</span>
             </a>
           </motion.div>
